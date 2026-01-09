@@ -15,3 +15,12 @@
     git status
     git commit -m "commit message"
     git push
+
+>>for creating a new branch
+    git checkout -b "branch-name"
+
+>>if you want to switch between branches
+    git checkout "branch-name"
+
+>>if you want to clone the application
+    git clone link-of-repository
