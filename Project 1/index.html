@@ -6,11 +6,16 @@
     <title>Laundry Mart</title>
 </head>
 <body>
-    <h1>Welcome to Laundry Wallah / Laundry Mart</h1>
-    <h3>About us</h3>
+    <h1 id="head">Welcome to Laundry Wallah / Laundry Mart</h1>
+    <ul>
+        <li><a href="#au">About us</a></li>
+        <li><a href="#ser">our Services</a></li>
+        <li><a href="#book">Book your Service now</a></li>
+    </ul>
+    <h3 id="au">About us</h3>
     <p>At Laundry Mart, we believe your time is your most valuable asset. Founded on the principle that <br> chores shouldn't get in the way of life, we’ve reimagined the laundry experience for the modern world.<br>We combine state-of-the-art cleaning technology with a seamless, customer-first approach. Whether <br> it’s your daily wear or your finest linens, our team handles every garment with expert care and precision.<br> From our easy scheduling to our door-to-door delivery, we’re here to take the "work" out of housework.</p>
     <img src="Laundry-Mart.png" height="250px" alt="Laundry Mart"><br>
-    <ul>
+    <ul id="ser">
         <li>Washing and Drying</li>
         <li>Ironing and Folding</li>
         <li>Dry cleaning</li>
@@ -50,27 +55,42 @@
         </tr>
     </table>
 
-    <h1>Book Now</h1>
+    <h1 id="book">Book Now</h1>
     <table>
         <form action="#" method="post">
         <tr>
-            <td>Name: </td>
-            <td><input type="text"></td>
+            <td><label for="name">Name: </label></td>
+            <td><input type="text" id="name" placeholder="Enter Full Name" required></td>
         </tr>
         <tr>
-            <td>Email: </td>
-            <td><input type="email"></td>
+            <td><label for="email">Email: </label></td>
+            <td><input type="email" id="email" placeholder="Enter Email" required></td>
         </tr>
         <tr>
-            <td>Phone Number: </td>
-            <td><input type="number"></td>
+            <td><label for="number">Phone Number: </label></td>
+            <td><input type="number" id="number" placeholder="Entyer Mobile Number" required></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit"></td>
+            <td><label for="services">Select Your Services: </label></td>
+            <td>
+                <select name="services" id="work">
+                    <option value="null" style="text-align: center;">-----------Select------------</option>
+                    <option value="w&d">Washing and Drying</option>
+                    <option value="if">Ironing and Folding</option>
+                    <option value="dc">Dry cleaning</option>
+                    <option value="sr">Stain Removal</option>
+                    <option value="es">Express Services</option>
+                    <option value="sgc">Special Garment Care</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit"></td>
+            <td><input type="reset" name="" id=""></td>
         </tr>
         </form>
     </table>
-
+    <a href="#head">Back to Top</a>
     <footer>
         <h5>Contact us at: info@laundrymart.com.</h5>
     </footer>
