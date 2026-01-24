@@ -4,7 +4,7 @@ btn.addEventListener('click', function(){
     const text = document.getElementById('text').value;
     const greet = document.getElementById('greet');
     
-    greet.innerText = ` Hello ${text}`;
+    greet.innerText = ` Hello, ${text}`;
 });
 
 const red = document.querySelector('#red');
