@@ -97,9 +97,10 @@ function updateCartUI(){
     });
     cartTotalElement.innerText = `₹${total}`;
 }
+let btn;
 function updateButtonStyles() {
     serviceData.forEach(service => {
-        const btn = document.getElementById(`btn-${service.id}`);
+        btn = document.getElementById(`btn-${service.id}`);
         if (!btn) return; 
 
         const isInCart = cart.some(item => item.id === service.id);
@@ -144,6 +145,9 @@ bookBtn.addEventListener('click', function(){
         const cartItems =cartDisplay.querySelectorAll('.item')
         cartItems.forEach(item => { item.remove() })
         cartTotalElement.innerText = `₹0.00`;
+        cart = []
+        btn.classList.remove('remove-item');
+        btn.innerHTML = 'Add Item <ion-icon name="add-circle-outline"></ion-icon>';
     }
 })
 displayServices();
