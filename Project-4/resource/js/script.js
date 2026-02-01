@@ -117,9 +117,9 @@ function updateButtonStyles() {
 const bookBtn = document.getElementById('book-btn')
 
 bookBtn.addEventListener('click', function(){
-    const bookTextBox = document.getElementById('txt-name').value;
-    const bookEmailBox = document.getElementById('txt-email').value;
-    const bookNumBox = document.getElementById('txt-num').value;
+    const bookTextBox = document.getElementById('txt-name');
+    const bookEmailBox = document.getElementById('txt-email');
+    const bookNumBox = document.getElementById('txt-num');
     const bookNowBody = document.getElementById('checkCart');
 
     const existingAlert = bookNowBody.querySelector('.alert-book-now');
@@ -135,7 +135,7 @@ bookBtn.addEventListener('click', function(){
     if (isCartIsEmpty) {
         Paragraph.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Add service to the Cart'
         bookNowBody.appendChild(Paragraph)
-    } else if (bookTextBox == '' || bookEmailBox == '' || bookNumBox == ''){
+    } else if (bookTextBox.value == '' || bookEmailBox.value == '' || bookNumBox.value == ''){
         Paragraph.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Enter Required Information'
         bookNowBody.appendChild(Paragraph)
     } else {
@@ -145,10 +145,12 @@ bookBtn.addEventListener('click', function(){
         const cartItems =cartDisplay.querySelectorAll('.item')
         cartItems.forEach(item => { item.remove() })
         cartTotalElement.innerText = `₹0.00`;
+        bookTextBox.value = ''; 
+        bookEmailBox.value = ''; 
+        bookNumBox.value = ''; 
         cart = []
-        btn.classList.remove('remove-item');
-        btn.innerHTML = 'Add Item <ion-icon name="add-circle-outline"></ion-icon>';
-    }
+        updateButtonStyles()
+    } 
 })
 displayServices();
 
