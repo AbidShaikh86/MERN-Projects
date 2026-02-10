@@ -5,7 +5,7 @@ btn.addEventListener('click', function(){
     const greet = document.getElementById('greet');
     
     if(text === ""){
-        greet.innerText = `Hello, `;
+        greet.innerText = `Hello `;
     } else{
         greet.innerText = `Hello, ${text}`;
     }
