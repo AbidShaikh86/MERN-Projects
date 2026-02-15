@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About-Us</title>
+    <style>
+        :root {
+            --primary-text-color: #E9D8A6;
+            --secondary-text-color: #94D2BD;
+            --primary-color: #005F73;
+            --secondary-color: #0A9396;
+            --secondary-color-light: #0a94966c;
+            --third-color: #CA6702;
+            --fourth-color: #EE9B00;
+            --darkshades-primary: #001219;
+            --darkshades-secondary: #BB3E03;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .home-head {
+            height: 100dvh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            background-color: var(--darkshades-primary);
+        }
+
+        .navbar {
+            display: flex;
+            width: 100%;
+
+            ul {
+                list-style: none;
+                display: flex;
+                column-gap: 30px;
+                margin-right: 7%;
+                margin-left: auto;
+                margin-top: 60px;
+            }
+
+            a:visited,
+            a:link {
+                text-decoration: none;
+                color: var(--primary-text-color);
+                font-size: 1.3rem;
+                padding: 10px 15px;
+            }
+
+            a:hover,
+            a:active {
+                background-color: var(--secondary-color-light);
+                border-radius: 20px;
+            }
+            div {
+                margin: 50px;
+            }
+        }
+
+        .logo {
+            font-size: 200%;
+            color: var(--primary-text-color);
+
+        }
+        .about-page{
+            height: 90dvh;
+            display: flex;
+            align-items: center;
+            padding: 5%;
+        }
+        .container{
+            height: 40dvh;
+            display: flex;
+            flex-direction: column;
+            text-align: justify;
+            row-gap: 30px;
+            h1{
+                font-size: 200%;
+                color: var(--primary-text-color);
+            }
+            h3{
+                font-size: 160%;
+                color: var(--primary-text-color);
+            }
+            p{
+                font-size: 110%;
+                margin-bottom: 5px;
+                color: var(--primary-text-color);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="home-head">
+        <div class="navbar">
+            <div>
+                <span class="logo">Assignment-6</span>
+            </div>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About-us</a></li>
+                <li><a href="/contact">Contact-us</a></li>
+            </ul>
+        </div>
+        <div class="about-page">
+            <div class="container">
+                <h1>Driven by data, powered by people, and slightly obsessed with your success</h1>
+                <h3>Who We Are</h3>
+                <p>We started with a simple observation: the world didn’t need another company—it needed a <b>better one</b>.</p>
+                <p>Founded in was born out of a small office, a lot of caffeine, and a single goal: to provide solutions that actually move the needle. We don’t believe in "one size fits all" because, frankly, it usually fits no one.</p>
+            </div>
+        </div>
+    </header>
+
+
+</body>
+
+</html>

@@ -1,33 +1,33 @@
 const serviceData = [
     {
-        id : 1,
-        name : "Dry Cleaning",
-        price : 200.00
+        id: 1,
+        name: "Dry Cleaning",
+        price: 200.00
     },
     {
-        id : 2,
-        name : "Wash & Fold",
-        price : 100.00
+        id: 2,
+        name: "Wash & Fold",
+        price: 100.00
     },
     {
-        id : 3,
-        name : "Ironing",
-        price : 30.00
+        id: 3,
+        name: "Ironing",
+        price: 30.00
     },
     {
-        id : 4,
-        name : "Stain Removal",
-        price : 500.00
+        id: 4,
+        name: "Stain Removal",
+        price: 500.00
     },
     {
-        id : 5,
-        name : "Leather & Suede Cleaning",
-        price : 999.00
+        id: 5,
+        name: "Leather & Suede Cleaning",
+        price: 999.00
     },
     {
-        id : 6,
-        name : "Wedding Dress Cleaning",
-        price : 2800.00
+        id: 6,
+        name: "Wedding Dress Cleaning",
+        price: 2800.00
     }
 ]
 
@@ -37,11 +37,11 @@ const serviceInfo = document.getElementById('allServices');
 const cartDisplay = document.getElementById('cart-body');
 const cartTotalElement = document.getElementById('total-Amount');
 
-function displayServices(){
+function displayServices() {
     serviceData.forEach(service => {
         const div = document.createElement('div');
         div.classList.add('service-info');
-        
+
         div.innerHTML = `
         <div>${service.name}</div>
         <div class="price">₹${service.price.toFixed(2)}</div>
@@ -61,26 +61,29 @@ function toggleCart(id) {
         const serviceToAdd = serviceData.find(service => service.id === id);
         cart.push(serviceToAdd);
     }
-    
+
     updateCartUI();
     updateButtonStyles();
 }
-
-function updateCartUI(){
+let total;
+function updateCartUI() {
     cartDisplay.innerHTML = '';
-    
-    if(cart.length === 0){
-        cartDisplay.innerHTML = `
-            <div class="no-item-cart">
+
+    if (cart.length === 0) {
+        const empDiv = document.createElement('div');
+        empDiv.classList.add('no-item-cart');
+        // <div class="no-item-cart">
+        // </div>`;
+        empDiv.innerHTML = `
                 <ion-icon name="alert-circle-outline"></ion-icon>
                 <h5>No items Added!</h5>
-                <p>Add Items to the cart from service bar!</p>
-            </div>`;
+                <p>Add Items to the cart from service bar!</p>`;
         cartTotalElement.innerText = '₹0.00';
+        cartDisplay.appendChild(empDiv)
         return;
     }
 
-    let total = 0;
+    total = 0;
 
     cart.forEach((item, index) => {
         total += item.price;
@@ -101,12 +104,12 @@ let btn;
 function updateButtonStyles() {
     serviceData.forEach(service => {
         btn = document.getElementById(`btn-${service.id}`);
-        if (!btn) return; 
+        if (!btn) return;
 
         const isInCart = cart.some(item => item.id === service.id);
 
         if (isInCart) {
-            btn.classList.add('remove-item'); 
+            btn.classList.add('remove-item');
             btn.innerHTML = 'Remove item <ion-icon name="remove-circle-outline"></ion-icon>';
         } else {
             btn.classList.remove('remove-item');
@@ -116,14 +119,14 @@ function updateButtonStyles() {
 }
 const bookBtn = document.getElementById('book-btn')
 
-bookBtn.addEventListener('click', function(){
+bookBtn.addEventListener('click', function () {
     const bookTextBox = document.getElementById('txt-name');
     const bookEmailBox = document.getElementById('txt-email');
     const bookNumBox = document.getElementById('txt-num');
     const bookNowBody = document.getElementById('checkCart');
 
     const existingAlert = bookNowBody.querySelector('.alert-book-now');
-    if(existingAlert){
+    if (existingAlert) {
         existingAlert.remove()
     }
 
@@ -135,22 +138,42 @@ bookBtn.addEventListener('click', function(){
     if (isCartIsEmpty) {
         Paragraph.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Add service to the Cart'
         bookNowBody.appendChild(Paragraph)
-    } else if (bookTextBox.value == '' || bookEmailBox.value == '' || bookNumBox.value == ''){
+    } else if (bookTextBox.value == '' || bookEmailBox.value == '' || bookNumBox.value == '') {
         Paragraph.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Enter Required Information'
         bookNowBody.appendChild(Paragraph)
     } else {
         Paragraph.innerHTML = '<ion-icon name="checkmark-circle-outline"></ion-icon> Your Email has Been sent'
         Paragraph.style.color = 'green'
         bookNowBody.appendChild(Paragraph)
-        const cartItems =cartDisplay.querySelectorAll('.item')
+        const cartItems = cartDisplay.querySelectorAll('.item')
         cartItems.forEach(item => { item.remove() })
-        cartTotalElement.innerText = `₹0.00`;
-        bookTextBox.value = ''; 
-        bookEmailBox.value = ''; 
-        bookNumBox.value = ''; 
+        
+        
+        
+        
+        console.log(cart);
+        let parms = {
+            name: bookTextBox.value,
+            email: bookEmailBox.value,
+            number: bookNumBox.value,
+            cost_total: total,
+            ser_name: cart[0].name,
+            price: cart[0].price
+        }
+        console.log(parms);
+        
+        
+        emailjs.send("service_qq7xu5d", "template_em6ysgm", parms)
+        .then(console.log('Email Has been Sent!'))
+        
         cart = []
+        cartTotalElement.innerText = `₹0.00`;
+        bookTextBox.value = '';
+        bookEmailBox.value = '';
+        bookNumBox.value = '';
+        updateCartUI()
         updateButtonStyles()
-    } 
+    }
 })
 displayServices();
 
