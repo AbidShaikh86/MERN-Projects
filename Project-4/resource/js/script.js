@@ -148,9 +148,6 @@ bookBtn.addEventListener('click', function () {
         const cartItems = cartDisplay.querySelectorAll('.item')
         cartItems.forEach(item => { item.remove() })
         
-        
-        
-        
         console.log(cart);
         let parms = {
             name: bookTextBox.value,
@@ -161,8 +158,7 @@ bookBtn.addEventListener('click', function () {
             price: cart[0].price
         }
         console.log(parms);
-        
-        
+
         emailjs.send("service_qq7xu5d", "template_em6ysgm", parms)
         .then(console.log('Email Has been Sent!'))
         
@@ -176,36 +172,3 @@ bookBtn.addEventListener('click', function () {
     }
 })
 displayServices();
-
-// bookBtn.addEventListener('click', function(){
-//     const bookTextBox = document.getElementById('txt-name').value
-//     const bookEmailBox = document.getElementById('txt-email').value
-//     const bookNumberBox = document.getElementById('txt-num').value
-
-//     const bookNowBody = document.getElementById('checkCart')
-
-//     const existingAlert = bookNowBody.querySelector('.alert-book-now');
-//     if (existingAlert) {
-//         existingAlert.remove();
-//     }
-
-//     const Para = document.createElement('p')
-//     Para.classList.add('alert-book-now')
-
-//     const isCartIsEmpty = cart.length === 0;
-
-//     if(isCartIsEmpty){
-//         Para.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Add service to the Cart'
-//         bookNowBody.appendChild(Para)
-//     }else if(bookTextBox === '' || bookEmailBox === '' || bookNumberBox=== ''){
-//         Para.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Enter Required Information'
-//         bookNowBody.appendChild(Para)
-//     }else{
-//         Para.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Email Has been sent'
-//         Para.style.color = 'green'
-//         bookNowBody.appendChild(Para)
-
-//     }
-// })
-
-
