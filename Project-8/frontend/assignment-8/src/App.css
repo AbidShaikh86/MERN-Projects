@@ -1,0 +1,117 @@
+*{
+    background-color: hsl(271, 76%, 75%);
+}
+.container{ 
+    padding: "20px"; 
+    font-family: "sans-serif";
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    justify-content: center;
+    flex-direction: column;
+    padding: 15px 10px;
+    background-color: hsl(240, 100%, 65%);
+    h1{
+        background: transparent;
+        color: white;
+    }
+    h4{
+        background-color: transparent;
+        color: white;
+    }
+}
+.input-box{
+    height: fit-content;
+    width: fit-content;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    input{
+        border: none;
+        width: 300px;
+        padding: 20px;
+        background-color: hsl(240, 100%, 85%);
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        font-size: 1.2rem;
+    }
+    input::placeholder{
+        font-size: 1.2rem;
+    }
+    button{
+        border: none;
+        padding: 20px;
+        font-size: 1.2rem;
+        background-color: hsl(240, 100%, 45%);
+        color: hsl(0, 0%, 97%);
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+.task-list{ 
+    margin-top: "20px" ;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.tasks-list{
+    display: flex;
+    align-items: center;
+}
+.task{ 
+    display: "flex";
+    align-items: "center";
+    margin-bottom: "10px";
+    padding: "10px";
+    border-radius: "5px";
+    margin-top: 10px;
+}
+.updating-list{ 
+    flex-grow: 1; 
+    display: "flex"; 
+    gap: "10px";
+}
+.static-list{ 
+    flex: 1;
+    margin-right: 10px;
+    font-size: 1.3rem;
+    padding: 10px 15px;
+    background-color: hsl(240, 100%, 85%);
+    border-radius: 5px;
+}
+.btn{
+    padding: 8px 13px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.edit-button{
+    background-color: hsl(120, 100%, 65%);
+    margin-right: 10px;
+}
+.delete-button{
+    background-color: hsl(0, 97%, 60%);
+}
+.edit-input{
+    padding: 10px 15px;
+    background-color: hsl(180, 100%, 80%);
+}
+@media(max-width: 536px){
+    .input-box{
+        input{
+            width: 200px;
+        }
+    }
+}
+@media(max-width: 400px){
+    .input-box{
+        input{
+            width: 200px;
+            padding: 10px;
+        }
+        button{
+            padding: 10px;
+        }
+    }
+}
