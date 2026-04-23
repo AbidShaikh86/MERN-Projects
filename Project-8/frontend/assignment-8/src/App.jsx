@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 
-const link = "http://localhost:3000";
+const link = "https://task-manager-backend-2h3t.onrender.com";
 
 function App() {
   const [task, setTask] = useState([])
