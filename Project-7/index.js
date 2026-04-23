@@ -157,7 +157,7 @@ app.delete('/tasks/:id',(req, res) => {
     tasks.splice(index, 1)
     res.status(200).json({
         success: true,
-        message: "user has been Deleted"
+        message: "Task has been Deleted"
     })
 });
 

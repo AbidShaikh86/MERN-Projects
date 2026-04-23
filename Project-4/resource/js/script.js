@@ -72,8 +72,7 @@ function updateCartUI() {
     if (cart.length === 0) {
         const empDiv = document.createElement('div');
         empDiv.classList.add('no-item-cart');
-        // <div class="no-item-cart">
-        // </div>`;
+        
         empDiv.innerHTML = `
                 <ion-icon name="alert-circle-outline"></ion-icon>
                 <h5>No items Added!</h5>
