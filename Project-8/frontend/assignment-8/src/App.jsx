@@ -44,6 +44,17 @@ function App() {
     setUpdateTask("")
   }
 
+  const completeTodo = async (id) => {
+    const task = await axios.put(`${link}/task/${id}`)
+
+    setTask(task.map((task) => {
+      if (task._id === task.data._id){
+        task.completed = task.data.completed;
+      }
+    }))
+    
+  }
+
   const editTask = (task) => {
     setTaskId(task._id)
     setUpdateTask(task.title)

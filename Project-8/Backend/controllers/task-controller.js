@@ -60,3 +60,12 @@ exports.deleteTaskById = async (req, res) => {
     const task = await taskModel.findByIdAndDelete(id)
     res.json()
 }
+
+exports.toggleComplete = async (req, res) => {
+    const { id } = req.params;
+
+    const task = await taskModel.findById(id);
+    task.completed = !task.completed;
+    task.save();
+    res.json(task)
+}
