@@ -32,25 +32,26 @@ function App() {
   }
 
   const updateTaskById = async (id) => {
-    const data = await axios.put(`${link}/task/${id}`, {title: updateTask})
+    const data = await axios.put(`${link}/tasks/${id}`, {title: updateTask})
 
-    setTask(task.map((task) => {
-      if(task._id === data.data._id){
-        task.title = data.data.title
+    setTask(task.map((item) => {
+      if(item._id === data.data._id){
+        return {...item, title: data.data.title}
       }
-      return task
+      return item
     }))
     setTaskId(null)
     setUpdateTask("")
   }
 
-  const completeTodo = async (id) => {
-    const task = await axios.put(`${link}/task/${id}`)
+  const completeTask = async (id) => {
+    const toggleTask = await axios.put(`${link}/task/${id}`)
 
-    setTask(task.map((task) => {
-      if (task._id === task.data._id){
-        task.completed = task.data.completed;
+    setTask(task.map((item) => {
+      if (item._id === toggleTask.data._id){
+        return {...item, completed: toggleTask.data.completed}
       }
+      return item;
     }))
     
   }
@@ -80,8 +81,9 @@ function App() {
                 <button onClick={() => setTaskId(null)} className='delete-button btn'>❌</button>
               </div>
              ) : (
-              <div className='tasks-list'>
-                <div onClick={() => completeTodo(todo._id)} className='static-list' style={{textDecoration: todo.completed ? "line-through" : "none" }}>
+              <div className='tasks-list' key={todo._id}>
+                <input type="checkbox" checked={todo.completed} onChange={() => completeTask(todo._id)} />
+                <div className='static-list' style={{textDecoration: todo.completed ? "line-through" : "none" }}>
                   {todo.title}
                 </div>
                 <button onClick={() => editTask(todo)} className='edit-button btn'>🖊</button>
