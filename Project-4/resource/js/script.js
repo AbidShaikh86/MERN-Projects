@@ -105,9 +105,9 @@ function updateButtonStyles() {
         btn = document.getElementById(`btn-${service.id}`);
         if (!btn) return;
 
-        const isInCart = cart.some(item => item.id === service.id);
+        const underCart = cart.some(item => item.id === service.id);
 
-        if (isInCart) {
+        if (underCart) {
             btn.classList.add('remove-item');
             btn.innerHTML = 'Remove item <ion-icon name="remove-circle-outline"></ion-icon>';
         } else {
@@ -122,9 +122,9 @@ bookBtn.addEventListener('click', function () {
     const bookTextBox = document.getElementById('txt-name');
     const bookEmailBox = document.getElementById('txt-email');
     const bookNumBox = document.getElementById('txt-num');
-    const bookNowBody = document.getElementById('checkCart');
+    const checkCart = document.getElementById('checkCart');
 
-    const existingAlert = bookNowBody.querySelector('.alert-book-now');
+    const existingAlert = checkCart.querySelector('.alert-book-now');
     if (existingAlert) {
         existingAlert.remove()
     }
@@ -136,25 +136,32 @@ bookBtn.addEventListener('click', function () {
 
     if (isCartIsEmpty) {
         Paragraph.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Add service to the Cart'
-        bookNowBody.appendChild(Paragraph)
+        checkCart.appendChild(Paragraph)
     } else if (bookTextBox.value == '' || bookEmailBox.value == '' || bookNumBox.value == '') {
         Paragraph.innerHTML = '<ion-icon name="alert-circle-outline"></ion-icon> Please Enter Required Information'
-        bookNowBody.appendChild(Paragraph)
+        checkCart.appendChild(Paragraph)
     } else {
         Paragraph.innerHTML = '<ion-icon name="checkmark-circle-outline"></ion-icon> Your Email has Been sent'
         Paragraph.style.color = 'green'
-        bookNowBody.appendChild(Paragraph)
+        checkCart.appendChild(Paragraph)
         const cartItems = cartDisplay.querySelectorAll('.item')
         cartItems.forEach(item => { item.remove() })
         
         console.log(cart);
+        const serviceName = []
+        const servicePrice = []
+        cart.forEach((item, index) => {
+            serviceName.push(item.name)
+            servicePrice.push(item.price)
+        })
+    
         let parms = {
             name: bookTextBox.value,
             email: bookEmailBox.value,
             number: bookNumBox.value,
             cost_total: total,
-            ser_name: cart[0].name,
-            price: cart[0].price
+            ser_name: serviceName,
+            price: servicePrice
         }
         console.log(parms);
 
