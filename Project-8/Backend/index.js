@@ -26,7 +26,7 @@ app.post("/task",addNewTask)
 
 app.put("/task/:id", toggleComplete)
 
-app.put("/task/:id",updateTaskById)
+app.put("/tasks/:id",updateTaskById)
 
 app.delete("/task/:id",deleteTaskById)
 

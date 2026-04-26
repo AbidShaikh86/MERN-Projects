@@ -35,7 +35,7 @@ exports.addNewTask = async (req, res) => {
         completed: false
     })
 
-    task.save()
+    await task.save()
     res.json(task)
 }
 
@@ -66,6 +66,6 @@ exports.toggleComplete = async (req, res) => {
 
     const task = await taskModel.findById(id);
     task.completed = !task.completed;
-    task.save();
+    await task.save();
     res.json(task)
 }
